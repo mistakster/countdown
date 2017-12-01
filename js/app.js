@@ -63,8 +63,30 @@
 
 	var timer, totalTimer;
 
+	function alarm(mockRun) {
+		var alarm = $("#alarm").get(0);
+		var result = alarm.play();
+
+		if (result && $.isFunction(result.catch)) {
+			result
+				.then(function () {
+					if (mockRun) {
+						alarm.pause();
+					}
+				})
+				.catch(function (reason) {
+					console.log('Audio playback was prevented because: ' + reason.message);
+				});
+		} else {
+			if (mockRun) {
+				alarm.pause();
+			}
+		}
+	}
+
 	$("#timer").bind({
-		"submit": function () {
+		"submit": function (e) {
+			e.preventDefault();
 
 			var m = parseValue($("#minutes").val()),
 				s = parseValue($("#seconds").val());
@@ -94,7 +116,7 @@
 				}());
 			});
 
-			return false;
+			alarm(true);
 		},
 
 		"run.timer": function () {
@@ -110,11 +132,7 @@
 		},
 
 		"alarm.timer": function () {
-			$("#alarm").each(function () {
-				if ($.isFunction(this.play)) {
-					this.play();
-				}
-			});
+			alarm(false);
 		},
 
 		"update.timer": function (e, m, s) {
