@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Final countdown</title>
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div id="display" class="display">
+    <span id="m" class="display__minutes">00</span>:<span id="s" class="display__seconds">00</span>
+</div>
+<form id="timer" action="#" class="timer">
+    <input id="minutes" name="minutes" class="timer__minutes" value="00"
+        />&nbsp;:&nbsp;<input id="seconds" name="seconds" class="timer__seconds" value="00"/>
+    <button type="submit" class="timer__button">Start</button>
+    <button type="button" class="timer__button timer__button_pause" id="pause">Pause</button>
+    <button type="button" class="timer__button timer__button_resume" id="resume">Continue</button>
+    <span class="timer__total"></span>
+</form>
+<div id="progress" class="progress"></div>
+<audio id="alarm" autobuffer="autobuffer">
+    <source src="media/bell.mp3"/>
+    <source src="media/bell.ogg"/>
+</audio>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>

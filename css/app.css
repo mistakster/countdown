@@ -1,0 +1,58 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: relative;
+}
+
+.display {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 400px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress {
+    background: #99ccff;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    z-index: -1;
+}
+
+.timer {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.timer__minutes,
+.timer__seconds {
+    width: 3em;
+}
+
+.timer__total {
+    color: #aaa;
+    font-size: 80%;
+}
+
+.timer__button_resume,
+.timer__button_pause {
+    display: none;
+}
+
+.timer_paused .timer__button_resume,
+.timer_running .timer__button_pause {
+    display: inline-block;
+}
+
+.timer_paused .timer__button_pause {
+    display: none !important;
+}
